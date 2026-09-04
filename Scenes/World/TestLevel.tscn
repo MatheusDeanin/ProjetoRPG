@@ -1,0 +1,76 @@
+[gd_scene load_steps=8 format=3]
+
+[ext_resource type="PackedScene" path="res://Scenes/Player/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="2_hud"]
+[ext_resource type="PackedScene" path="res://Scenes/World/Chest.tscn" id="3_chest"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(2000, 50)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_floor_tex"]
+size = Vector2(2000, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
+size = Vector2(200, 20)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_plat_tex"]
+size = Vector2(200, 20)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="Ground" type="StaticBody2D" parent="."]
+position = Vector2(640, 650)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Sprite2D" type="Sprite2D" parent="Ground"]
+modulate = Color(0.2, 0.2, 0.2, 1)
+texture = SubResource("PlaceholderTexture2D_floor_tex")
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(300, 520)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform1"]
+modulate = Color(0.3, 0.4, 0.3, 1)
+texture = SubResource("PlaceholderTexture2D_plat_tex")
+
+[node name="ChestLvl1" parent="Platform1" instance=ExtResource("3_chest")]
+position = Vector2(0, -30)
+arma_conteudo = "Faca Enferrujada"
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(1000, 420)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_plat")
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+modulate = Color(0.4, 0.2, 0.2, 1)
+texture = SubResource("PlaceholderTexture2D_plat_tex")
+
+[node name="ChestLvl3" parent="Platform2" instance=ExtResource("3_chest")]
+position = Vector2(0, -30)
+arma_conteudo = "Katana Amaldiçoada"
+
+[node name="ParedeEsq" type="StaticBody2D" parent="."]
+position = Vector2(-360, 350)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeEsq"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ParedeDir" type="StaticBody2D" parent="."]
+position = Vector2(1640, 350)
+rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ParedeDir"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(640, 600)

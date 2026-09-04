@@ -1,0 +1,5 @@
+res://Scripts/Globals/InventoryManager.gd
+res://Scripts/Player/Player.gd
+res://Scripts/UI/HUD.gd
+res://Scripts/World/Chest.gd
+res://Scenes/Player/Player.tscn
