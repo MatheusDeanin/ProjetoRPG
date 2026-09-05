@@ -322,12 +322,30 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hitbox"]
+size = Vector2(60, 40)
+
 [node name="Player" type="CharacterBody2D" unique_id=1029518047]
 script = ExtResource("1_player")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2061099943]
+position = Vector2(0, -40)
 shape = SubResource("RectangleShape2D_col")
 
 [node name="Animacao" type="AnimatedSprite2D" parent="." unique_id=970376355]
+position = Vector2(0, -18)
 sprite_frames = SubResource("SpriteFrames_5rrho")
 animation = &"attack_air"
+
+[node name="HitboxAtaque" type="Area2D" parent="." unique_id=111111111]
+position = Vector2(50, -60)
+monitoring = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxAtaque" unique_id=222222222]
+shape = SubResource("RectangleShape2D_hitbox")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=123456789]
+enabled = true
+zoom = Vector2(2.5, 2.5)
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0

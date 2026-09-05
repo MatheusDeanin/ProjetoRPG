@@ -1,8 +1,5 @@
-res://Scripts/Globals/InventoryManager.gd
-res://Scripts/Globals/StatsManager.gd
-res://Scripts/Player/Player.gd
-res://Scripts/UI/CharacterCreation.gd
-res://Scripts/UI/HUD.gd
-res://Scripts/World/Chest.gd
-res://Scenes/Player/Player.tscn
 res://Scenes/World/TestLevel.tscn
+res://Scripts/Player/Player.gd
+res://Scenes/Player/Player.tscn
+res://Scenes/World/Enemy.tscn
+res://Scripts/World/Enemy.gd
