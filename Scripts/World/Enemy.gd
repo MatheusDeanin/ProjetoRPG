@@ -10,7 +10,7 @@ extends CharacterBody2D
 @export var patrol_distance: float = 100.0
 
 # -- Estado da IA -------------------------------------------------------------
-enum Estado { PATRULHA, PERSEGUICAO, ATAQUE, MORTO }
+enum Estado { PATRULHA, PERSEGUICAO, ATAQUE, HURT, MORTO }
 var estado: Estado = Estado.PATRULHA
 
 var pv_atual: float
@@ -30,8 +30,16 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 @onready var anim: AnimatedSprite2D = $Animacao
 @onready var timer_ataque: Timer = $TimerAtaque
 @onready var area_deteccao: Area2D = $AreaDeteccao
+@onready var progress_bar: ProgressBar = $ProgressBar
+
+const DamageNumber = preload("res://Scenes/UI/DamageNumber.tscn")
 
 func _ready() -> void:
+	add_to_group("Inimigo")
+	var p = get_tree().get_first_node_in_group("Player")
+	if p != null:
+		add_collision_exception_with(p)
+		p.add_collision_exception_with(self)
 	pv_atual = pv_max
 	origem_patrulha = global_position
 
@@ -44,6 +52,12 @@ func _ready() -> void:
 
 	area_deteccao.body_entered.connect(_on_body_entered)
 	area_deteccao.body_exited.connect(_on_body_exited)
+	
+	anim.animation_finished.connect(_on_animation_finished)
+
+	progress_bar.max_value = pv_max
+	progress_bar.value = pv_atual
+	progress_bar.visible = false
 
 	_tocar_animacao("idle")
 
@@ -62,6 +76,9 @@ func _physics_process(delta: float) -> void:
 		Estado.ATAQUE:
 			velocity.x = move_toward(velocity.x, 0, velocidade_patrulha)
 			_tentar_atacar()
+		Estado.HURT:
+			# Aplica atrito ao knockback para desacelerar o inimigo
+			velocity.x = move_toward(velocity.x, 0, 800 * delta)
 
 	move_and_slide()
 
@@ -126,23 +143,35 @@ func _on_timer_ataque_timeout() -> void:
 	pode_atacar = true
 
 # -- Receber dano -------------------------------------------------------------
-func receber_dano(valor: float) -> void:
+func receber_dano(valor: float, knockback_dir: float = 0.0) -> void:
 	if estado == Estado.MORTO:
 		return
 
 	pv_atual -= valor
 	pv_atual = clamp(pv_atual, 0, pv_max)
+	
+	progress_bar.value = pv_atual
+	progress_bar.visible = true
+
+	# Instanciar e exibir texto de dano
+	var dmg_num = DamageNumber.instantiate()
+	dmg_num.amount = valor
+	dmg_num.global_position = global_position + Vector2(randf_range(-15, 15), -80)
+	get_tree().current_scene.add_child(dmg_num)
 
 	if pv_atual <= 0:
 		_morrer()
 	else:
+		estado = Estado.HURT
+		# Aplica o knockback forte na direcao do golpe
+		velocity.x = knockback_dir * 300
+		
 		_tocar_animacao("hurt")
-		if estado == Estado.PATRULHA:
-			estado = Estado.PERSEGUICAO
 
 func _morrer() -> void:
 	estado = Estado.MORTO
 	velocity = Vector2.ZERO
+	progress_bar.visible = false
 	_tocar_animacao("death")
 	set_physics_process(false)
 	$CollisionShape2D.set_deferred("disabled", true)
@@ -156,7 +185,7 @@ func _on_body_entered(body: Node2D) -> void:
 		if estado == Estado.PATRULHA:
 			estado = Estado.PERSEGUICAO
 
-func _on_body_exited(body: Node2D) -> void:
+func _on_body_exited(_body: Node2D) -> void:
 	pass
 
 # -- Utilitario de animacao ---------------------------------------------------
@@ -166,3 +195,10 @@ func _tocar_animacao(nome: String) -> void:
 	if anim.animation == nome and anim.is_playing():
 		return
 	anim.play(nome)
+
+func _on_animation_finished() -> void:
+	if estado == Estado.HURT and anim.animation == "hurt":
+		if is_instance_valid(player):
+			estado = Estado.PERSEGUICAO
+		else:
+			estado = Estado.PATRULHA

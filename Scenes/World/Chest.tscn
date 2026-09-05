@@ -1,20 +1,49 @@
-[gd_scene load_steps=4 format=3]
+﻿[gd_scene load_steps=4 format=3 uid="uid://bo4ua5kj5umtk"]
 
 [ext_resource type="Script" path="res://Scripts/World/Chest.gd" id="1_chest"]
+[ext_resource type="Texture2D" path="res://zip/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="2_tiles"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_area"]
-size = Vector2(60, 40)
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sprite"]
 size = Vector2(60, 40)
 
 [node name="Chest" type="Area2D"]
 script = ExtResource("1_chest")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-modulate = Color(1, 0.8, 0, 1)
-texture = SubResource("PlaceholderTexture2D_sprite")
+texture_filter = 1
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_tiles")
+region_enabled = true
+region_rect = Rect2(288, 272, 32, 32)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_area")
 
+[node name="AvisoE" type="Label" parent="."]
+offset_left = -30.0
+offset_top = -60.0
+offset_right = 30.0
+offset_bottom = -34.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
+text = "[ E ]"
+horizontal_alignment = 1
+
+[node name="Brilho" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 25
+lifetime = 0.8
+one_shot = true
+explosiveness = 0.9
+emission_shape = 1
+emission_sphere_radius = 20.0
+direction = Vector2(0, -1)
+spread = 70.0
+gravity = Vector2(0, 150)
+initial_velocity_min = 100.0
+initial_velocity_max = 180.0
+scale_amount_min = 4.0
+scale_amount_max = 8.0
+color = Color(1, 0.9, 0.2, 1)

@@ -1,18 +1,19 @@
-extends Node
-# Autoload para gerenciar o inventário e armas do jogador
+﻿extends Node
+# Autoload para gerenciar o inventÃ¡rio e armas do jogador
 
 signal item_coletado(nome_arma, dano)
 
 var armas_coletadas = []
 var arma_equipada = null
 
-# Banco de Dados de Armas (Dicionário de Dificuldade)
-# Aqui controlamos o balanceamento. Masmorras Nível 3 dão armas Nível 3.
+# Banco de Dados de Armas (DicionÃ¡rio de Dificuldade)
+# Aqui controlamos o balanceamento. Masmorras NÃ­vel 3 dÃ£o armas NÃ­vel 3.
 var banco_de_armas = {
 	"Faca Enferrujada": {"dano": 10, "tipo": "Leve", "dificuldade": 1},
+	"Machado": {"dano": 20, "tipo": "Pesada", "dificuldade": 1},
 	"Pistola Silenciada": {"dano": 25, "tipo": "Fogo", "dificuldade": 2},
-	"Katana Amaldiçoada": {"dano": 55, "tipo": "Pesada", "dificuldade": 3},
-	"Relíquia de Sangue": {"dano": 120, "tipo": "Ritual", "dificuldade": 5}
+	"Katana AmaldiÃ§oada": {"dano": 55, "tipo": "Pesada", "dificuldade": 3},
+	"RelÃ­quia de Sangue": {"dano": 120, "tipo": "Ritual", "dificuldade": 5}
 }
 
 func adicionar_arma(nome_arma: String):
@@ -24,4 +25,5 @@ func adicionar_arma(nome_arma: String):
 		item_coletado.emit(nome_arma, info["dano"])
 		return true
 	return false
+
 

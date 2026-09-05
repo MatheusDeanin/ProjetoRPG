@@ -1,5 +1,7 @@
-res://Scenes/World/TestLevel.tscn
 res://Scripts/Player/Player.gd
-res://Scenes/Player/Player.tscn
-res://Scenes/World/Enemy.tscn
 res://Scripts/World/Enemy.gd
+res://Scenes/World/TestLevel.tscn
+res://Scripts/World/Chest.gd
+res://Scenes/Player/Player.tscn
+res://Scripts/Globals/InventoryManager.gd
+res://Scenes/World/Chest.tscn

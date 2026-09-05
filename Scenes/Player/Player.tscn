@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://wiacby2viu4y"]
+﻿[gd_scene format=3 uid="uid://wiacby2viu4y"]
 
 [ext_resource type="Script" uid="uid://cd8l8orwm63w" path="res://Scripts/Player/Player.gd" id="1_player"]
 [ext_resource type="Texture2D" uid="uid://cj67escj2rocw" path="res://Assets/Hero/male_hero-combo_1.png" id="2_4wape"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://cr3wyhxdvxtxy" path="res://Assets/Hero/male_hero-combo_1_end.png" id="3_t26db"]
 [ext_resource type="Texture2D" uid="uid://cbdmircw2hk8t" path="res://Assets/Hero/male_hero-jump.png" id="4_t26db"]
 [ext_resource type="Texture2D" uid="uid://dpgb7u11anfl3" path="res://Assets/Hero/male_hero-run.png" id="5_fk5o5"]
+
+[ext_resource type="Texture2D" path="res://zip/male_hero-combo_1-2.png.png" id="10_weapon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_col"]
 size = Vector2(40, 80)
@@ -167,8 +169,34 @@ region = Rect2(1024, 0, 128, 128)
 atlas = ExtResource("5_fk5o5")
 region = Rect2(1152, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_0"]
+atlas = ExtResource("10_weapon")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_1"]
+atlas = ExtResource("10_weapon")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_2"]
+atlas = ExtResource("10_weapon")
+region = Rect2(256, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_5rrho"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpn_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpn_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpn_2")
+}],
+"loop": false,
+"name": &"attack_weapon",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_t26db")
@@ -349,3 +377,6 @@ enabled = true
 zoom = Vector2(2.5, 2.5)
 position_smoothing_enabled = true
 position_smoothing_speed = 5.0
+
+
+

@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 const SPEED = 350.0
 const JUMP_VELOCITY = -650.0
-const DANO_ATAQUE = 15.0
+var DANO_ATAQUE = 10.0
+var tem_arma = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var controles_invertidos = false
@@ -14,6 +15,7 @@ var combo_requested = false
 @onready var hitbox: Area2D = $HitboxAtaque
 
 func _ready():
+	InventoryManager.item_coletado.connect(_on_arma_coletada)
 	add_to_group("Player")
 
 	if has_node("Animacao"):
@@ -75,9 +77,14 @@ func _physics_process(delta):
 			_ativar_hitbox(true)
 			if has_node("Animacao"):
 				if is_on_floor():
-					$Animacao.play("attack")
+					if tem_arma:
+						$Animacao.play("attack_weapon")
+					else:
+						$Animacao.play("attack")
 				else:
-					if $Animacao.sprite_frames.has_animation("attack_air"):
+					if tem_arma:
+						$Animacao.play("attack_weapon")
+					elif $Animacao.sprite_frames.has_animation("attack_air"):
 						$Animacao.play("attack_air")
 					else:
 						$Animacao.play("attack")
@@ -131,11 +138,12 @@ func _ativar_hitbox(ativo: bool) -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body.has_method("receber_dano"):
-		body.receber_dano(DANO_ATAQUE)
-		# Pequeno knockback visual: empurra o inimigo
-		if body is CharacterBody2D:
-			var dir = sign(body.global_position.x - global_position.x)
-			body.velocity.x += dir * 200
+		var dir = sign(body.global_position.x - global_position.x)
+		if dir == 0: dir = 1.0 if not $Animacao.flip_h else -1.0
+		
+		# Passa o dano e a direcao do knockback
+		body.receber_dano(DANO_ATAQUE, dir)
+
 
 # --- Fim do ataque ----------------------------------------------------------
 func _on_animation_finished():
@@ -152,7 +160,7 @@ func _on_animation_finished():
 			combo_requested = false
 			_ativar_hitbox(false)
 
-	elif anim_name == "attack2" or anim_name == "attack_air":
+	elif anim_name == "attack2" or anim_name == "attack_air" or anim_name == "attack_weapon":
 		is_attacking = false
 		combo_requested = false
 		_ativar_hitbox(false)
@@ -171,3 +179,8 @@ func _on_respawn():
 	is_attacking = false
 	combo_requested = false
 	_ativar_hitbox(false)
+
+func _on_arma_coletada(nome_arma: String, dano: int) -> void:
+	DANO_ATAQUE = float(dano)
+	tem_arma = true
+	print("Nova arma equipada: ", nome_arma, " - Dano: ", DANO_ATAQUE)
