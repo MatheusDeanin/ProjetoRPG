@@ -40,12 +40,15 @@ func _ready() -> void:
 	if p != null:
 		add_collision_exception_with(p)
 		p.add_collision_exception_with(self)
+		
+	# Para os orcs nao se empurrarem e "bugarem" um dentro do outro:
+	for inimigo in get_tree().get_nodes_in_group("Inimigo"):
+		if inimigo != self:
+			add_collision_exception_with(inimigo)
 	pv_atual = pv_max
 	origem_patrulha = global_position
 
 	anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
-	anim.scale = Vector2(2.5, 2.5)
-
 	timer_ataque.wait_time = tempo_entre_ataques
 	timer_ataque.one_shot = true
 	timer_ataque.timeout.connect(_on_timer_ataque_timeout)

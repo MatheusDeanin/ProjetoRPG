@@ -1,5 +1,5 @@
 78098b89c88a74ebe8c20117b8754620
-::res://::1788621476
+::res://::1788713667
 README.md::TextFile::-1::1788586285::0::1::::<><><>0<>0<><>::
 ::res://Assets/::1788586479
 chest.jpg::CompressedTexture2D::8823658937545416197::1788586285::1788586479::1::::<><><>0<>0<>a8e199eb81e494dce0ee82c8bee5b187<>res://.godot/imported/chest.jpg-cdf8eef94386ed503471fad19c2876eb.ctex::
@@ -17,30 +17,30 @@ male_hero-run.png::CompressedTexture2D::8224599926385626574::1788586285::1788586
 male_hero-walk.png::CompressedTexture2D::3752013609239154223::1788586285::1788586479::1::::<><><>0<>0<>2f44164d20498cb581decd0a50226f89<>res://.godot/imported/male_hero-walk.png-f62c939b5ab56158928e8f19645b32b1.ctex::
 ::res://Scenes/::1788586285
 ::res://Scenes/Player/::1788586285
-Player.tscn::PackedScene::1560673244510814642::1788589541::0::1::::<><><>0<>0<><>::uid://cd8l8orwm63w::::res://Scripts/Player/Player.gd<>uid://cj67escj2rocw::::res://Assets/Hero/male_hero-combo_1.png<>uid://ddmdnyic7pq4::::res://Assets/Hero/male_hero-fall_loop.png<>uid://dseve1uhbat80::::res://Assets/Hero/male_hero-idle.png<>uid://cr3wyhxdvxtxy::::res://Assets/Hero/male_hero-combo_1_end.png<>uid://cbdmircw2hk8t::::res://Assets/Hero/male_hero-jump.png<>uid://dpgb7u11anfl3::::res://Assets/Hero/male_hero-run.png
+Player.tscn::PackedScene::-1::1788713382::0::1::::<><><>0<>0<><>::uid://cd8l8orwm63w::::res://Scripts/Player/Player.gd<>uid://cj67escj2rocw::::res://Assets/Hero/male_hero-combo_1.png<>uid://ddmdnyic7pq4::::res://Assets/Hero/male_hero-fall_loop.png<>uid://dseve1uhbat80::::res://Assets/Hero/male_hero-idle.png<>uid://cr3wyhxdvxtxy::::res://Assets/Hero/male_hero-combo_1_end.png<>uid://cbdmircw2hk8t::::res://Assets/Hero/male_hero-jump.png<>uid://dpgb7u11anfl3::::res://Assets/Hero/male_hero-run.png<>res://zip/male_hero-combo_1-2.png.png
 ::res://Scenes/UI/::1788621721
 CharacterCreation.tscn::PackedScene::-1::1788586285::0::1::::<><><>0<>0<><>::res://Scripts/UI/CharacterCreation.gd
 DamageNumber.tscn::PackedScene::-1::1788621721::0::1::::<><><>0<>0<><>::
 HUD.tscn::PackedScene::-1::1788586285::0::1::::<><><>0<>0<><>::res://Scripts/UI/HUD.gd
-::res://Scenes/World/::1788621843
-Chest.tscn::PackedScene::-1::1788586285::0::1::::<><><>0<>0<><>::res://Scripts/World/Chest.gd
-Enemy.tscn::PackedScene::-1::1788622479::0::1::::<><><>0<>0<><>::res://Scripts/World/Enemy.gd<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Idle.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Walk.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Attack01.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Hurt.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Death.png
-TestLevel.tscn::PackedScene::193024767959832713::1788621843::0::1::::<><><>0<>0<><>::uid://wiacby2viu4y::::res://Scenes/Player/Player.tscn<>res://Scenes/UI/HUD.tscn<>res://Scenes/World/Chest.tscn<>uid://u17ef7xjam3e::::res://zip/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png<>res://Scenes/World/Enemy.tscn<>uid://cx71s3mh2jarf::::res://zip/Legacy-Fantasy - High Forest 2.3/Background/Background.png
+::res://Scenes/World/::1788626232
+Chest.tscn::PackedScene::-1::1788626787::0::1::::<><><>0<>0<><>::res://Scripts/World/Chest.gd<>res://zip/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png
+Enemy.tscn::PackedScene::-1::1788712392::0::1::::<><><>0<>0<><>::res://Scripts/World/Enemy.gd<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Idle.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Walk.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Attack01.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Hurt.png<>res://zip/Tiny RPG Character Asset Pack 01 v2.0 -Free Soldier&Orc/Characters(100x100 split)/Orc/Orc/Orc_Death.png
+TestLevel.tscn::PackedScene::193024767959832713::1788713694::0::1::::<><><>0<>0<><>::uid://wiacby2viu4y::::res://Scenes/Player/Player.tscn<>res://Scenes/UI/HUD.tscn<>res://Scenes/World/Chest.tscn<>uid://u17ef7xjam3e::::res://zip/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png<>res://Scenes/World/Enemy.tscn<>uid://cx71s3mh2jarf::::res://zip/Legacy-Fantasy - High Forest 2.3/Background/Background.png
 ::res://Scenes/World/Enemy/::1788588493
 ::res://Scripts/::1788586285
 ::res://Scripts/Globals/::1788586285
-InventoryManager.gd::GDScript::1883503106009333649::1788586285::0::1::::<>Node<><>0<>0<><>::
+InventoryManager.gd::GDScript::1883503106009333649::1788625244::0::1::::<>Node<><>0<>0<><>::
 StatsManager.gd::GDScript::890837298527224474::1788586285::0::1::::<>Node<><>0<>0<><>::
-::res://Scripts/Player/::1788622336
-Player.gd::GDScript::148595880732617898::1788622336::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://Scripts/Player/::1788624824
+Player.gd::GDScript::148595880732617898::1788625324::0::1::::<>CharacterBody2D<><>0<>0<><>::
 ::res://Scripts/UI/::1788621840
 CharacterCreation.gd::GDScript::5965738813348897915::1788586285::0::1::::<>CanvasLayer<><>0<>0<><>::
 DamageNumber.gd::GDScript::5201572114243170942::1788621721::0::1::::<>Node2D<><>0<>0<><>::
 HUD.gd::GDScript::995717795978642849::1788586285::0::1::::<>CanvasLayer<><>0<>0<><>::
-::res://Scripts/World/::1788588785
-Chest.gd::GDScript::5760769259306013879::1788586285::0::1::::<>Area2D<><>0<>0<><>::
-Enemy.gd::GDScript::6388316389088494269::1788621764::0::1::::<>CharacterBody2D<><>0<>0<><>::
-::res://zip/::1788624136
+::res://Scripts/World/::1788712726
+Chest.gd::GDScript::5760769259306013879::1788626874::0::1::::<>Area2D<><>0<>0<><>::
+Enemy.gd::GDScript::6388316389088494269::1788712726::0::1::::<>CharacterBody2D<><>0<>0<><>::
+::res://zip/::1788624143
 LICENSE.txt::TextFile::-1::1788586285::0::1::::<><><>0<>0<><>::
 male_hero-combo_1-2.png.png::CompressedTexture2D::3809578036714315547::1788624050::1788624143::1::::<><><>0<>0<>c3b6c3e242ae574e7577bc93a08f75b6<>res://.godot/imported/male_hero-combo_1-2.png.png-30a7150510fd46f4a14e1aeb73ae1afc.ctex::
 male_hero.png::CompressedTexture2D::1856135251544751387::1788586285::1788586479::1::::<><><>0<>0<>561cf3ed92077cfc78643344c1d30af6<>res://.godot/imported/male_hero.png-e80bebda23ae2417b2350ca4c601daac.ctex::
@@ -103,9 +103,10 @@ all.png::CompressedTexture2D::3716583693350745418::1788586285::1788586479::1::::
 Dead-Sheet.png::CompressedTexture2D::6558416057598440012::1788586285::1788586479::1::::<><><>0<>0<>746934f29999c73d66e8de7b0e197cbc<>res://.godot/imported/Dead-Sheet.png-adf79362ffdaa1285a2b0f811bf0116f.ctex::
 Hide-Sheet.png::CompressedTexture2D::2844779186386929372::1788586285::1788586479::1::::<><><>0<>0<>5ac9bcef9f9abc3b3cc80e243e705e8b<>res://.godot/imported/Hide-Sheet.png-b5caf8bf40d38e16c1d4ae022c5bc4c6.ctex::
 walk-Sheet.png::CompressedTexture2D::8298722753847940252::1788586285::1788586479::1::::<><><>0<>0<>cff220dfcef22ede89dcf72d62b626a7<>res://.godot/imported/walk-Sheet.png-5bf922c18ce6cf97f0ce92a91560e3c1.ctex::
-::res://zip/Legacy-Fantasy - High Forest 2.3/Trees/::1788586479
+::res://zip/Legacy-Fantasy - High Forest 2.3/Trees/::1788713667
 Background.png::CompressedTexture2D::5537410100838432563::1788586285::1788586479::1::::<><><>0<>0<>8ba036f788ebf732d53cd2e91e3b10be<>res://.godot/imported/Background.png-1bbd4002edbb08c758996e2d0c89d856.ctex::
 Dark-Tree.png::CompressedTexture2D::7321706426415602439::1788586285::1788586479::1::::<><><>0<>0<>ea5708b7f90e80763cbf9f17f94e9280<>res://.godot/imported/Dark-Tree.png-3201a2e5b2e4352cd6d36716c465f7dc.ctex::
+DenseTrees.png::CompressedTexture2D::5387207288433198::1788713667::1788713749::1::::<><><>0<>0<>faf97f3cf04038231fa595505ee4b1f3<>res://.godot/imported/DenseTrees.png-ed15da9387165be103ff84d6f79c9f02.ctex::
 Golden-Tree.png::CompressedTexture2D::1858158828310053845::1788586285::1788586479::1::::<><><>0<>0<>67655a7f081e72991d09c4ec85e3bf28<>res://.godot/imported/Golden-Tree.png-e008a27979e72216c2ed471967979e55.ctex::
 Green-Tree.png::CompressedTexture2D::3210567339407029489::1788586285::1788586479::1::::<><><>0<>0<>1be6153b54743b00ae1b95af68fd31ec<>res://.godot/imported/Green-Tree.png-a6fde2a602ba09cb9d07964a20ee1b21.ctex::
 Red-Tree.png::CompressedTexture2D::2834830865289237005::1788586285::1788586479::1::::<><><>0<>0<>d80c0241f3630fab5d240b3de643a2e7<>res://.godot/imported/Red-Tree.png-b59feffce54a2d1d6159ebe06e3a724c.ctex::

@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://c0rdbyvprnuv"]
+﻿[gd_scene format=3 uid="uid://c0rdbyvprnuv"]
 
 [ext_resource type="PackedScene" uid="uid://wiacby2viu4y" path="res://Scenes/Player/Player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="2_hud"]
@@ -7,11 +7,16 @@
 [ext_resource type="PackedScene" path="res://Scenes/World/Enemy.tscn" id="5_enemy"]
 [ext_resource type="Texture2D" uid="uid://cx71s3mh2jarf" path="res://zip/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="6_bg"]
 
+[ext_resource type="Texture2D" path="res://zip/Legacy-Fantasy - High Forest 2.3/Trees/Background.png" id="7_trees_bg"]
+
+[ext_resource type="Texture2D" path="res://zip/Legacy-Fantasy - High Forest 2.3/Trees/DenseTrees.png" id="8_dense"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
 size = Vector2(2000, 50)
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_floor_tex"]
 size = Vector2(2000, 50)
+
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
 size = Vector2(200, 20)
@@ -722,46 +727,45 @@ sources/0 = SubResource("TileSetAtlasSource_0eno5")
 
 [node name="TestLevel" type="Node2D" unique_id=811457959]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=109422467]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_ignore_camera_zoom = true
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1779893874]
-motion_scale = Vector2(0.2, 0)
-motion_mirroring = Vector2(480, 0)
+[node name="FundoCeu" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.1, 0)
+motion_mirroring = Vector2(1920, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=2018033430]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FundoCeu"]
 texture_filter = 1
-position = Vector2(-384, -6)
+position = Vector2(0, -100)
 scale = Vector2(4, 4)
 texture = ExtResource("6_bg")
 centered = false
 
-[node name="FundoMarrom2" type="ColorRect" parent="ParallaxBackground/ParallaxLayer/Sprite2D" unique_id=1532043646]
-z_index = -10
-offset_left = 144.0
-offset_top = 205.0
-offset_right = 191.0
-offset_bottom = 592.0
-color = Color(0.29, 0.18, 0.07, 1)
+[node name="ArvoresLonge" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.3, 0)
+motion_mirroring = Vector2(3584, 0)
 
-[node name="FundoMarrom3" type="ColorRect" parent="ParallaxBackground/ParallaxLayer/Sprite2D" unique_id=840380503]
-z_index = -10
-offset_left = 144.0
-offset_top = 205.0
-offset_right = 191.0
-offset_bottom = 592.0
-color = Color(0.29, 0.18, 0.07, 1)
+[node name="Arv1" type="Sprite2D" parent="ParallaxBackground/ArvoresLonge"]
+modulate = Color(0.5, 0.6, 0.7, 1)
+texture_filter = 1
+position = Vector2(0, -350)
+scale = Vector2(4, 4)
+texture = ExtResource("8_dense")
+centered = false
+
+[node name="ArvoresPerto" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.6, 0)
+motion_mirroring = Vector2(3584, 0)
+
+[node name="Arv1" type="Sprite2D" parent="ParallaxBackground/ArvoresPerto"]
+texture_filter = 1
+position = Vector2(0, -150)
+scale = Vector2(4, 4)
+texture = ExtResource("8_dense")
+centered = false
 
 [node name="HUD" parent="." unique_id=1484374683 instance=ExtResource("2_hud")]
 
-[node name="Ground" type="StaticBody2D" parent="." unique_id=1081728129]
-position = Vector2(640, 650)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Ground" unique_id=351076346]
-shape = SubResource("RectangleShape2D_floor")
-
-[node name="Sprite2D" type="Sprite2D" parent="Ground" unique_id=2048575045]
-modulate = Color(0.2, 0.2, 0.2, 1)
-texture = SubResource("PlaceholderTexture2D_floor_tex")
 
 [node name="Platform1" type="StaticBody2D" parent="." unique_id=1865302918]
 position = Vector2(300, 520)
@@ -780,7 +784,7 @@ shape = SubResource("RectangleShape2D_plat")
 
 [node name="ChestLvl3" parent="Platform2" unique_id=1727340463 instance=ExtResource("3_chest")]
 position = Vector2(0, -30)
-arma_conteudo = "Katana Amaldiçoada"
+arma_conteudo = "Katana AmaldiÃ§oada"
 
 [node name="ParedeEsq" type="StaticBody2D" parent="." unique_id=1901306101]
 position = Vector2(-360, 350)
@@ -858,3 +862,18 @@ offset_top = -2.0
 offset_right = 1072.0
 offset_bottom = 142.0
 color = Color(0.2901961, 0.3372549, 0.07058824, 1)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

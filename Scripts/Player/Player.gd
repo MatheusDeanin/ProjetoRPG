@@ -32,11 +32,11 @@ func _ready():
 
 		$Animacao.animation_finished.connect(_on_animation_finished)
 
-	# Hitbox de ataque -- conecta o sinal de area
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 
 	StatsManager.enlouquecendo.connect(_on_enlouquecendo)
 	StatsManager.respawn.connect(_on_respawn)
+	StatsManager.player_morreu.connect(_on_player_morreu)
 	_configurar_controles_wasd()
 
 func _configurar_controles_wasd():
@@ -171,6 +171,10 @@ func _process(delta):
 
 func _on_enlouquecendo():
 	controles_invertidos = true
+
+func _on_player_morreu():
+	set_physics_process(false)
+	$Animacao.play("fall") # Or a death animation if we add one
 
 func _on_respawn():
 	global_position = StatsManager.checkpoint_pos
