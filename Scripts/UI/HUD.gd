@@ -1,4 +1,4 @@
-﻿extends CanvasLayer
+extends CanvasLayer
 
 @onready var hp_bar = $StatusPanel/Margin/VBox/HPBar
 @onready var label_vida = $StatusPanel/Margin/VBox/HPBar/HPLabel
@@ -19,27 +19,22 @@ func _ready():
 	
 	InventoryManager.item_coletado.connect(_on_item_coletado)
 	
-	_atualizar_vida(StatsManager.pv_atual)
-	_atualizar_sanidade(StatsManager.sanidade_atual)
+	_atualizar_vida(StatsManager.hp_atual)
+	_atualizar_mana(StatsManager.mana_atual)
 	
-	StatsManager.pv_changed.connect(_atualizar_vida)
-	StatsManager.sanidade_changed.connect(_atualizar_sanidade)
-	StatsManager.enlouquecendo.connect(_on_trauma)
+	StatsManager.hp_changed.connect(_atualizar_vida)
+	StatsManager.mana_changed.connect(_atualizar_mana)
 	StatsManager.player_morreu.connect(_on_player_morreu)
 
 func _atualizar_vida(valor: float):
-	hp_bar.max_value = StatsManager.max_pv
+	hp_bar.max_value = StatsManager.max_hp
 	hp_bar.value = valor
-	label_vida.text = "HP: " + str(int(valor)) + " / " + str(int(StatsManager.max_pv))
+	label_vida.text = "HP: " + str(int(valor)) + " / " + str(int(StatsManager.max_hp))
 	
-func _atualizar_sanidade(valor: float):
-	mp_bar.max_value = StatsManager.max_sanidade
+func _atualizar_mana(valor: float):
+	mp_bar.max_value = StatsManager.max_mana
 	mp_bar.value = valor
-	label_sanidade.text = "MP: " + str(int(valor)) + " / " + str(int(StatsManager.max_sanidade))
-
-func _on_trauma():
-	label_sanidade.text = "ESTADO DE TRAUMA!"
-	label_sanidade.add_theme_color_override("font_color", Color(1, 0.2, 0.2))
+	label_sanidade.text = "MP: " + str(int(valor)) + " / " + str(int(StatsManager.max_mana))
 
 func _on_player_morreu():
 	game_over_panel.visible = true

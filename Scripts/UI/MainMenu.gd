@@ -1,4 +1,4 @@
-﻿extends Control
+extends Control
 
 @onready var btn_jogar = $VBoxContainer/BtnJogar
 @onready var btn_sair = $VBoxContainer/BtnSair
@@ -8,7 +8,7 @@ func _ready():
 	btn_sair.pressed.connect(_on_sair_pressed)
 
 func _on_jogar_pressed():
-	get_tree().change_scene_to_file("res://Scenes/World/TestLevel.tscn")
+	get_tree().change_scene_to_file("res://Scenes/UI/IntroCutscene.tscn")
 
 func _on_sair_pressed():
 	get_tree().quit()

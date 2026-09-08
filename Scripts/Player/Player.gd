@@ -6,7 +6,6 @@ var DANO_ATAQUE = 10.0
 var tem_arma = false
 
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-var controles_invertidos = false
 
 # Controle de ataque e combos
 var is_attacking = false
@@ -17,6 +16,11 @@ var combo_requested = false
 func _ready():
 	InventoryManager.item_coletado.connect(_on_arma_coletada)
 	add_to_group("Player")
+	
+	# Verifica se já tinha uma arma equipada antes de mudar de cena
+	if InventoryManager.arma_equipada != null:
+		var info = InventoryManager.banco_de_armas[InventoryManager.arma_equipada]
+		_on_arma_coletada(InventoryManager.arma_equipada, info["dano"])
 
 	if has_node("Animacao"):
 		$Animacao.scale = Vector2(1.5, 1.5)
@@ -34,19 +38,39 @@ func _ready():
 
 	hitbox.body_entered.connect(_on_hitbox_body_entered)
 
-	StatsManager.enlouquecendo.connect(_on_enlouquecendo)
 	StatsManager.respawn.connect(_on_respawn)
 	StatsManager.player_morreu.connect(_on_player_morreu)
 	_configurar_controles_wasd()
+	
+	# Chama o limite da câmera logo no início
+	call_deferred("_limitar_camera_pelo_tilemap")
+
+func _limitar_camera_pelo_tilemap():
+	# Procura o TileMap na cena atual (o pai do Player)
+	var tilemap = get_parent().get_node_or_null("TileMap")
+	if tilemap and has_node("Camera2D"):
+		var used_rect = tilemap.get_used_rect()
+		var cell_size = tilemap.tile_set.tile_size
+		var cam = $Camera2D
+		
+		# Define os limites da câmera exatamente no tamanho do chão desenhado
+		cam.limit_left = used_rect.position.x * cell_size.x
+		cam.limit_top = used_rect.position.y * cell_size.y
+		cam.limit_right = (used_rect.position.x + used_rect.size.x) * cell_size.x
+		cam.limit_bottom = (used_rect.position.y + used_rect.size.y) * cell_size.y
 
 func _configurar_controles_wasd():
 	if not InputMap.has_action("pular"): InputMap.add_action("pular")
 	if not InputMap.has_action("andar_esquerda"): InputMap.add_action("andar_esquerda")
 	if not InputMap.has_action("andar_direita"): InputMap.add_action("andar_direita")
 	if not InputMap.has_action("atacar"): InputMap.add_action("atacar")
+	if not InputMap.has_action("inventario"): InputMap.add_action("inventario")
 
 	var key_w = InputEventKey.new(); key_w.physical_keycode = KEY_W
 	InputMap.action_add_event("pular", key_w)
+	
+	var key_i = InputEventKey.new(); key_i.physical_keycode = KEY_I
+	InputMap.action_add_event("inventario", key_i)
 
 	var key_space = InputEventKey.new(); key_space.physical_keycode = KEY_SPACE
 	InputMap.action_add_event("pular", key_space)
@@ -102,7 +126,6 @@ func _physics_process(delta):
 
 	# Movimentacao Horizontal
 	var direction = Input.get_axis("andar_esquerda", "andar_direita")
-	if controles_invertidos: direction *= -1
 
 	if direction:
 		velocity.x = direction * SPEED
@@ -166,11 +189,10 @@ func _on_animation_finished():
 		_ativar_hitbox(false)
 
 func _process(delta):
-	if Input.is_physical_key_pressed(KEY_Q): StatsManager.perder_sanidade(20.0 * delta)
+	# Botão de Teste (E para Vida)
 	if Input.is_physical_key_pressed(KEY_E): StatsManager.tomar_dano(20.0 * delta)
-
-func _on_enlouquecendo():
-	controles_invertidos = true
+	# Botão de Teste (Q para gastar Mana)
+	if Input.is_physical_key_pressed(KEY_Q): StatsManager.gastar_mana(10.0 * delta)
 
 func _on_player_morreu():
 	set_physics_process(false)
@@ -179,7 +201,6 @@ func _on_player_morreu():
 func _on_respawn():
 	global_position = StatsManager.checkpoint_pos
 	velocity = Vector2.ZERO
-	controles_invertidos = false
 	is_attacking = false
 	combo_requested = false
 	_ativar_hitbox(false)

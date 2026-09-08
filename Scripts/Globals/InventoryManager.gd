@@ -1,10 +1,11 @@
-﻿extends Node
+extends Node
 # Autoload para gerenciar o inventÃ¡rio e armas do jogador
 
 signal item_coletado(nome_arma, dano)
 
 var armas_coletadas = []
 var arma_equipada = null
+var chaves_coletadas = []
 
 # Banco de Dados de Armas (DicionÃ¡rio de Dificuldade)
 # Aqui controlamos o balanceamento. Masmorras NÃ­vel 3 dÃ£o armas NÃ­vel 3.

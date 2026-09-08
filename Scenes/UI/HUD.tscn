@@ -1,6 +1,7 @@
-﻿[gd_scene load_steps=7 format=3 uid="uid://c8yhw2k4g8"]
+[gd_scene format=3 uid="uid://b6yfa8d6q11y8"]
 
-[ext_resource type="Script" path="res://Scripts/UI/HUD.gd" id="1_hud"]
+[ext_resource type="Script" uid="uid://oglldtu30cvh" path="res://Scripts/UI/HUD.gd" id="1_hud"]
+[ext_resource type="PackedScene" uid="uid://invui001" path="res://Scenes/UI/InventoryUI.tscn" id="2_qc5w2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
 bg_color = Color(0.12, 0.12, 0.15, 0.9)
@@ -42,28 +43,28 @@ corner_radius_top_right = 5
 corner_radius_bottom_right = 5
 corner_radius_bottom_left = 5
 
-[node name="HUD" type="CanvasLayer"]
+[node name="HUD" type="CanvasLayer" unique_id=1461664637]
 script = ExtResource("1_hud")
 
-[node name="StatusPanel" type="PanelContainer" parent="."]
+[node name="StatusPanel" type="PanelContainer" parent="." unique_id=150550557]
 offset_left = 20.0
 offset_top = 20.0
 offset_right = 320.0
 offset_bottom = 120.0
 theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
 
-[node name="Margin" type="MarginContainer" parent="StatusPanel"]
+[node name="Margin" type="MarginContainer" parent="StatusPanel" unique_id=1324275932]
 layout_mode = 2
 theme_override_constants/margin_left = 15
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 15
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="StatusPanel/Margin"]
+[node name="VBox" type="VBoxContainer" parent="StatusPanel/Margin" unique_id=885232340]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="HPBar" type="ProgressBar" parent="StatusPanel/Margin/VBox"]
+[node name="HPBar" type="ProgressBar" parent="StatusPanel/Margin/VBox" unique_id=1956584602]
 custom_minimum_size = Vector2(0, 25)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_hp_bg")
@@ -71,21 +72,21 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_hp_fg")
 value = 50.0
 show_percentage = false
 
-[node name="HPLabel" type="Label" parent="StatusPanel/Margin/VBox/HPBar"]
+[node name="HPLabel" type="Label" parent="StatusPanel/Margin/VBox/HPBar" unique_id=221926911]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 18
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 18
 text = "Vida: 100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MPBar" type="ProgressBar" parent="StatusPanel/Margin/VBox"]
+[node name="MPBar" type="ProgressBar" parent="StatusPanel/Margin/VBox" unique_id=1942632576]
 custom_minimum_size = Vector2(0, 20)
 layout_mode = 2
 theme_override_styles/background = SubResource("StyleBoxFlat_mp_bg")
@@ -93,32 +94,31 @@ theme_override_styles/fill = SubResource("StyleBoxFlat_mp_fg")
 value = 75.0
 show_percentage = false
 
-[node name="MPLabel" type="Label" parent="StatusPanel/Margin/VBox/MPBar"]
+[node name="MPLabel" type="Label" parent="StatusPanel/Margin/VBox/MPBar" unique_id=873465143]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 14
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
+theme_override_font_sizes/font_size = 14
 text = "Sanidade: 100/100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LootLabel" type="Label" parent="."]
+[node name="LootLabel" type="Label" parent="." unique_id=721054151]
 offset_left = 20.0
 offset_top = 140.0
 offset_right = 400.0
 offset_bottom = 180.0
-theme_override_font_sizes/font_size = 20
 theme_override_colors/font_color = Color(1, 0.8, 0.2, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 5
-text = ""
+theme_override_font_sizes/font_size = 20
 
-[node name="GameOverPanel" type="ColorRect" parent="."]
+[node name="GameOverPanel" type="ColorRect" parent="." unique_id=2106355946]
 visible = false
 anchors_preset = 15
 anchor_right = 1.0
@@ -127,7 +127,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 0.8)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverPanel" unique_id=2016198495]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -142,23 +142,29 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 20
 
-[node name="Label" type="Label" parent="GameOverPanel/VBoxContainer"]
+[node name="Label" type="Label" parent="GameOverPanel/VBoxContainer" unique_id=1697955570]
 layout_mode = 2
-theme_override_font_sizes/font_size = 48
 theme_override_colors/font_color = Color(0.9, 0.1, 0.1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 8
+theme_override_font_sizes/font_size = 48
 text = "VOCÊ MORREU"
 horizontal_alignment = 1
 
-[node name="BtnRetry" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="BtnRetry" type="Button" parent="GameOverPanel/VBoxContainer" unique_id=1300397029]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Tentar Novamente"
 
-[node name="BtnMenu" type="Button" parent="GameOverPanel/VBoxContainer"]
+[node name="BtnMenu" type="Button" parent="GameOverPanel/VBoxContainer" unique_id=483294043]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 theme_override_font_sizes/font_size = 24
 text = "Menu Principal"
+
+[node name="InventoryUI" parent="." unique_id=1950226496 instance=ExtResource("2_qc5w2")]
+offset_left = 383.0
+offset_top = 82.0
+offset_right = 383.0
+offset_bottom = 82.0

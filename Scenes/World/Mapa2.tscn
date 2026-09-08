@@ -1,13 +1,13 @@
-[gd_scene format=3 uid="uid://ctdkq6jnwrf3f"]
+[gd_scene format=3 uid="uid://mrmcgxedhw3j"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Player/Player.tscn" id="1_player"]
-[ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="2_hud"]
+[ext_resource type="PackedScene" uid="uid://b6yfa8d6q11y8" path="res://Scenes/UI/HUD.tscn" id="2_hud"]
 [ext_resource type="PackedScene" path="res://Scenes/World/Chest.tscn" id="3_chest"]
 [ext_resource type="Texture2D" uid="uid://u17ef7xjam3e" path="res://zip/Legacy-Fantasy - High Forest 2.3/Assets/Tiles.png" id="4_t6nso"]
 [ext_resource type="PackedScene" path="res://Scenes/World/Enemy.tscn" id="5_enemy"]
 [ext_resource type="Texture2D" uid="uid://cx71s3mh2jarf" path="res://zip/Legacy-Fantasy - High Forest 2.3/Background/Background.png" id="6_bg"]
+[ext_resource type="PackedScene" uid="uid://cy8xportal001" path="res://Scenes/World/Portal.tscn" id="8_1q57q"]
 [ext_resource type="Texture2D" uid="uid://cuyx4a1dt0y" path="res://zip/Legacy-Fantasy - High Forest 2.3/Trees/DenseTrees.png" id="8_dense"]
-[ext_resource type="PackedScene" uid="uid://cy8xportal001" path="res://Scenes/World/Portal.tscn" id="8_fxw30"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_plat"]
 size = Vector2(200, 20)
@@ -721,25 +721,25 @@ sources/0 = SubResource("TileSetAtlasSource_0eno5")
 
 [node name="TestLevel" type="Node2D" unique_id=811457959]
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=714247792]
+[node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=795245931]
 scroll_ignore_camera_zoom = true
 
-[node name="FundoCeu" type="ParallaxLayer" parent="ParallaxBackground" unique_id=835646868]
+[node name="FundoCeu" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1693856402]
 motion_scale = Vector2(0.1, 0)
 motion_mirroring = Vector2(1920, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FundoCeu" unique_id=1353929260]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/FundoCeu" unique_id=1043394187]
 texture_filter = 1
 position = Vector2(0, -100)
 scale = Vector2(4, 4)
 texture = ExtResource("6_bg")
 centered = false
 
-[node name="ArvoresLonge" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1043152918]
+[node name="ArvoresLonge" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1745465318]
 motion_scale = Vector2(0.3, 0)
 motion_mirroring = Vector2(3584, 0)
 
-[node name="Arv1" type="Sprite2D" parent="ParallaxBackground/ArvoresLonge" unique_id=1334494550]
+[node name="Arv1" type="Sprite2D" parent="ParallaxBackground/ArvoresLonge" unique_id=477590169]
 modulate = Color(0.5, 0.6, 0.7, 1)
 texture_filter = 1
 position = Vector2(0, -350)
@@ -747,11 +747,11 @@ scale = Vector2(4, 4)
 texture = ExtResource("8_dense")
 centered = false
 
-[node name="ArvoresPerto" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1345038605]
+[node name="ArvoresPerto" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1924156574]
 motion_scale = Vector2(0.6, 0)
 motion_mirroring = Vector2(3584, 0)
 
-[node name="Arv1" type="Sprite2D" parent="ParallaxBackground/ArvoresPerto" unique_id=133682386]
+[node name="Arv1" type="Sprite2D" parent="ParallaxBackground/ArvoresPerto" unique_id=1168541823]
 texture_filter = 1
 position = Vector2(0, -150)
 scale = Vector2(4, 4)
@@ -856,8 +856,6 @@ offset_right = 1072.0
 offset_bottom = 142.0
 color = Color(0.2901961, 0.3372549, 0.07058824, 1)
 
-[node name="Portal" type="Area2D" parent="." unique_id=1056384668]
-
-[node name="Portal2" parent="." unique_id=869739169 instance=ExtResource("8_fxw30")]
-position = Vector2(1645, 496)
-proxima_fase = "res://Scenes/World/Mapa2.tscn"
+[node name="Portal" parent="." unique_id=1301604696 instance=ExtResource("8_1q57q")]
+position = Vector2(-296, 498)
+proxima_fase = "uid://ctdkq6jnwrf3f"

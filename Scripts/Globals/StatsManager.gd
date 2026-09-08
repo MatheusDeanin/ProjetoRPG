@@ -4,73 +4,73 @@ extends Node
 # Atributos Base
 var forca: int = 1
 var agilidade: int = 1
-var vigor: int = 1
-var intelecto: int = 1
-var presenca: int = 1
+var vitalidade: int = 1
+var inteligencia: int = 1
+var destreza: int = 1
 
-# Status de Combate e SobrevivÃªncia
-var nex: int = 5 # NÃ­vel de ExposiÃ§Ã£o Paranormal (%)
-var max_pv: float = 100.0
-var pv_atual: float = 100.0
+# Status de Combate
+var nivel: int = 1
+var max_hp: float = 100.0
+var hp_atual: float = 100.0
 
-var max_pe: float = 50.0
-var pe_atual: float = 50.0
+var max_mana: float = 50.0
+var mana_atual: float = 50.0
 
-var max_sanidade: float = 100.0
-var sanidade_atual: float = 100.0
+# Classe do Personagem
+var classe: String = "Guerreiro"
 
-# Origem do Personagem
-var origem: String = "Desconhecida"
-var trilha: String = "Nenhuma"
-
-signal pv_changed(new_value)
-signal sanidade_changed(new_value)
-signal enlouquecendo()
+signal hp_changed(new_value)
+signal mana_changed(new_value)
+signal player_morreu()
 signal respawn() # Aviso de que o jogador renasceu
 
-# PosiÃ§Ã£o do Ãºltimo Checkpoint salvo (Ex: SÃ­mbolo da Ordem na parede)
+# Posição do último Checkpoint salvo
 var checkpoint_pos: Vector2 = Vector2(640, 500)
 
 func _ready():
 	_calcular_status_maximos()
 
 func _calcular_status_maximos():
-	# Baseado no Vigor e PresenÃ§a, como descrito no GDD
-	max_pv = 50.0 + (vigor * 20.0) + (nex * 2.0)
-	pv_atual = max_pv
+	# HP Baseado na vitalidade
+	max_hp = 50.0 + (vitalidade * 20.0) + (nivel * 5.0)
+	hp_atual = max_hp
 	
-	max_sanidade = 80.0 + (presenca * 15.0)
-	sanidade_atual = max_sanidade
-
-signal player_morreu()
+	# Mana Baseado na inteligência
+	max_mana = 20.0 + (inteligencia * 15.0) + (nivel * 5.0)
+	mana_atual = max_mana
 
 func tomar_dano(valor: float):
-	pv_atual -= valor
-	pv_atual = clamp(pv_atual, 0, max_pv)
-	pv_changed.emit(pv_atual)
-	if pv_atual <= 0:
+	hp_atual -= valor
+	hp_atual = clamp(hp_atual, 0, max_hp)
+	hp_changed.emit(hp_atual)
+	if hp_atual <= 0:
 		print("Personagem Morreu!")
 		player_morreu.emit()
 
+func gastar_mana(valor: float) -> bool:
+	if mana_atual >= valor:
+		mana_atual -= valor
+		mana_changed.emit(mana_atual)
+		return true
+	return false
+
+func recuperar_mana(valor: float):
+	mana_atual += valor
+	mana_atual = clamp(mana_atual, 0, max_mana)
+	mana_changed.emit(mana_atual)
+
+func recuperar_hp(valor: float):
+	hp_atual += valor
+	hp_atual = clamp(hp_atual, 0, max_hp)
+	hp_changed.emit(hp_atual)
+
 func resetar_status():
-	pv_atual = max_pv
-	sanidade_atual = max_sanidade
-	pv_changed.emit(pv_atual)
-	sanidade_changed.emit(sanidade_atual)
+	hp_atual = max_hp
+	mana_atual = max_mana
+	hp_changed.emit(hp_atual)
+	mana_changed.emit(mana_atual)
 
 func renascer():
 	# Reseta os status e avisa o Player para se teleportar
-	pv_atual = max_pv
-	sanidade_atual = max_sanidade
-	pv_changed.emit(pv_atual)
-	sanidade_changed.emit(sanidade_atual)
+	resetar_status()
 	respawn.emit()
-
-func perder_sanidade(valor: float):
-	sanidade_atual -= valor
-	sanidade_atual = clamp(sanidade_atual, 0, max_sanidade)
-	sanidade_changed.emit(sanidade_atual)
-	
-	if sanidade_atual <= 0:
-		enlouquecendo.emit()
-		print("Estado de Trauma! Controles invertidos/Game Over em 60s.")
