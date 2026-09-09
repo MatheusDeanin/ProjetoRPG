@@ -25,7 +25,10 @@ signal player_morreu()
 signal respawn() # Aviso de que o jogador renasceu
 
 # Posição do último Checkpoint salvo
-var checkpoint_pos: Vector2 = Vector2(640, 500)
+var checkpoint_pos: Vector2 = Vector2(-160, 580)
+
+# Posição de spawn personalizada para transição de fases (Vector2.INF se usar o padrão da cena)
+var posicao_spawn: Vector2 = Vector2.INF
 
 func _ready():
 	_calcular_status_maximos()

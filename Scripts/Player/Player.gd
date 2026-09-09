@@ -14,6 +14,14 @@ var combo_requested = false
 @onready var hitbox: Area2D = $HitboxAtaque
 
 func _ready():
+	# Aplica posicao de spawn definida por portal/fase se houver
+	if StatsManager.posicao_spawn != Vector2.INF:
+		global_position = StatsManager.posicao_spawn
+		StatsManager.posicao_spawn = Vector2.INF
+
+	# Define o checkpoint para a posicao inicial do jogador na fase atual
+	StatsManager.checkpoint_pos = global_position
+
 	InventoryManager.item_coletado.connect(_on_arma_coletada)
 	add_to_group("Player")
 	

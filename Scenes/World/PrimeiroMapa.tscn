@@ -794,7 +794,7 @@ rotation = 1.5708
 shape = SubResource("RectangleShape2D_floor")
 
 [node name="Player" parent="." unique_id=2058976637 instance=ExtResource("1_player")]
-position = Vector2(640, 600)
+position = Vector2(-160, 580)
 
 [node name="TileMap" type="TileMap" parent="." unique_id=1150810612]
 tile_set = SubResource("TileSet_pqos3")
@@ -861,3 +861,4 @@ color = Color(0.2901961, 0.3372549, 0.07058824, 1)
 [node name="Portal2" parent="." unique_id=869739169 instance=ExtResource("8_fxw30")]
 position = Vector2(1645, 496)
 proxima_fase = "res://Scenes/World/Mapa2.tscn"
+posicao_spawn = Vector2(-160, 580)
