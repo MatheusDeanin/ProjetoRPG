@@ -34,13 +34,10 @@ func _ready():
 		$Animacao.scale = Vector2(1.5, 1.5)
 		$Animacao.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
-		# Forca as animacoes de ataque a NAO repetirem
-		if $Animacao.sprite_frames.has_animation("attack"):
-			$Animacao.sprite_frames.set_animation_loop("attack", false)
-		if $Animacao.sprite_frames.has_animation("attack2"):
-			$Animacao.sprite_frames.set_animation_loop("attack2", false)
-		if $Animacao.sprite_frames.has_animation("attack_air"):
-			$Animacao.sprite_frames.set_animation_loop("attack_air", false)
+		# Forca TODAS as animacoes de ataque a NAO repetirem
+		for anim in $Animacao.sprite_frames.get_animation_names():
+			if anim.begins_with("attack"):
+				$Animacao.sprite_frames.set_animation_loop(anim, false)
 
 		$Animacao.animation_finished.connect(_on_animation_finished)
 
@@ -108,18 +105,23 @@ func _physics_process(delta):
 			is_attacking = true
 			_ativar_hitbox(true)
 			if has_node("Animacao"):
-				if is_on_floor():
-					if tem_arma:
-						$Animacao.play("attack_weapon")
-					else:
-						$Animacao.play("attack")
-				else:
-					if tem_arma:
-						$Animacao.play("attack_weapon")
-					elif $Animacao.sprite_frames.has_animation("attack_air"):
-						$Animacao.play("attack_air")
-					else:
-						$Animacao.play("attack")
+				var anim_name = "attack"
+				
+				if tem_arma and InventoryManager.arma_equipada != null:
+					# Tenta achar uma animacao com o nome da arma. Ex: "attack_machado", "attack_espada_basica"
+					var sufixo = InventoryManager.arma_equipada.to_lower().replace(" ", "_").replace("á", "a").replace("ç", "c")
+					var nome_tentativa = "attack_" + sufixo
+					
+					if $Animacao.sprite_frames.has_animation(nome_tentativa):
+						anim_name = nome_tentativa
+					elif $Animacao.sprite_frames.has_animation("attack_weapon"):
+						anim_name = "attack_weapon" # Fallback
+				
+				# Ataque no ar
+				if not is_on_floor() and anim_name == "attack" and $Animacao.sprite_frames.has_animation("attack_air"):
+					anim_name = "attack_air"
+					
+				$Animacao.play(anim_name)
 
 	# Se estiver atacando, trava novas acoes
 	if is_attacking:
@@ -182,19 +184,14 @@ func _on_animation_finished():
 
 	var anim_name = $Animacao.animation
 
-	if anim_name == "attack":
-		if combo_requested and $Animacao.sprite_frames.has_animation("attack2"):
-			$Animacao.play("attack2")
+	if anim_name.begins_with("attack"):
+		if combo_requested and $Animacao.sprite_frames.has_animation(anim_name + "2"):
+			$Animacao.play(anim_name + "2")
 			combo_requested = false
 		else:
 			is_attacking = false
 			combo_requested = false
 			_ativar_hitbox(false)
-
-	elif anim_name == "attack2" or anim_name == "attack_air" or anim_name == "attack_weapon":
-		is_attacking = false
-		combo_requested = false
-		_ativar_hitbox(false)
 
 func _process(delta):
 	# Botão de Teste (E para Vida)

@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://wiacby2viu4y"]
+[gd_scene format=3 uid="uid://bu7xl07g640ul"]
 
 [ext_resource type="Script" uid="uid://cd8l8orwm63w" path="res://Scripts/Player/Player.gd" id="1_player"]
 [ext_resource type="Texture2D" uid="uid://cj67escj2rocw" path="res://Assets/Hero/male_hero-combo_1.png" id="2_4wape"]
@@ -7,23 +7,10 @@
 [ext_resource type="Texture2D" uid="uid://cr3wyhxdvxtxy" path="res://Assets/Hero/male_hero-combo_1_end.png" id="3_t26db"]
 [ext_resource type="Texture2D" uid="uid://cbdmircw2hk8t" path="res://Assets/Hero/male_hero-jump.png" id="4_t26db"]
 [ext_resource type="Texture2D" uid="uid://dpgb7u11anfl3" path="res://Assets/Hero/male_hero-run.png" id="5_fk5o5"]
-
-[ext_resource type="Texture2D" path="res://zip/male_hero-combo_1-2.png.png" id="10_weapon"]
+[ext_resource type="Texture2D" uid="uid://bujngt5lm1cit" path="res://zip/male_hero-combo_1-2.png.png" id="10_weapon"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_col"]
 size = Vector2(40, 80)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_t26db"]
-atlas = ExtResource("2_4wape")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fk5o5"]
-atlas = ExtResource("2_4wape")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_p7cr0"]
-atlas = ExtResource("2_4wape")
-region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrod0"]
 atlas = ExtResource("3_t26db")
@@ -51,6 +38,30 @@ region = Rect2(128, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_d2y64"]
 atlas = ExtResource("2_4wape")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t26db"]
+atlas = ExtResource("2_4wape")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fk5o5"]
+atlas = ExtResource("2_4wape")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p7cr0"]
+atlas = ExtResource("2_4wape")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_0"]
+atlas = ExtResource("10_weapon")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_1"]
+atlas = ExtResource("10_weapon")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_2"]
+atlas = ExtResource("10_weapon")
 region = Rect2(256, 0, 128, 128)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_825xp"]
@@ -169,48 +180,8 @@ region = Rect2(1024, 0, 128, 128)
 atlas = ExtResource("5_fk5o5")
 region = Rect2(1152, 0, 128, 128)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_0"]
-atlas = ExtResource("10_weapon")
-region = Rect2(0, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_1"]
-atlas = ExtResource("10_weapon")
-region = Rect2(128, 0, 128, 128)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpn_2"]
-atlas = ExtResource("10_weapon")
-region = Rect2(256, 0, 128, 128)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_5rrho"]
 animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wpn_0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wpn_1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wpn_2")
-}],
-"loop": false,
-"name": &"attack_weapon",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_t26db")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_fk5o5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_p7cr0")
-}],
-"loop": 2,
-"name": &"attack",
-"speed": 10.0
-}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_vrod0")
@@ -241,6 +212,39 @@ animations = [{
 "loop": 1,
 "name": &"attack_air",
 "speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t26db")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fk5o5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p7cr0")
+}],
+"loop": 2,
+"name": &"attack_espada_basica",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": 1,
+"name": &"attack_katana",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpn_0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpn_1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wpn_2")
+}],
+"loop": 0,
+"name": &"attack_machado",
+"speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -364,7 +368,7 @@ shape = SubResource("RectangleShape2D_col")
 [node name="Animacao" type="AnimatedSprite2D" parent="." unique_id=970376355]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_5rrho")
-animation = &"attack_air"
+animation = &"attack_katana"
 
 [node name="HitboxAtaque" type="Area2D" parent="." unique_id=111111111]
 position = Vector2(50, -60)
@@ -374,10 +378,5 @@ monitoring = false
 shape = SubResource("RectangleShape2D_hitbox")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=123456789]
-enabled = true
 zoom = Vector2(1.5, 1.5)
 position_smoothing_enabled = true
-position_smoothing_speed = 5.0
-
-
-
