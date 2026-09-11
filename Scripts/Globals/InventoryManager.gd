@@ -3,13 +3,14 @@ extends Node
 
 signal item_coletado(nome_arma, dano)
 
-var armas_coletadas = []
-var arma_equipada = null
+var armas_coletadas = ["Espada Básica"]
+var arma_equipada = "Espada Básica"
 var chaves_coletadas = []
 
-# Banco de Dados de Armas (DicionÃ¡rio de Dificuldade)
-# Aqui controlamos o balanceamento. Masmorras NÃ­vel 3 dÃ£o armas NÃ­vel 3.
+# Banco de Dados de Armas (Dicionário de Dificuldade)
+# Aqui controlamos o balanceamento. Masmorras Nível 3 dão armas Nível 3.
 var banco_de_armas = {
+	"Espada Básica": {"dano": 15, "tipo": "Leve", "dificuldade": 0},
 	"Faca Enferrujada": {"dano": 10, "tipo": "Leve", "dificuldade": 1},
 	"Machado": {"dano": 20, "tipo": "Pesada", "dificuldade": 1},
 	"Pistola Silenciada": {"dano": 25, "tipo": "Fogo", "dificuldade": 2},
@@ -26,5 +27,3 @@ func adicionar_arma(nome_arma: String):
 		item_coletado.emit(nome_arma, info["dano"])
 		return true
 	return false
-
-
