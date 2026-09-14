@@ -49,6 +49,7 @@ func _ready() -> void:
 	origem_patrulha = global_position
 
 	anim.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
+	anim.scale = Vector2(0.6, 0.6) # Escala ajustada para não ficar um monstro gigante em relação ao herói!
 	timer_ataque.wait_time = tempo_entre_ataques
 	timer_ataque.one_shot = true
 	timer_ataque.timeout.connect(_on_timer_ataque_timeout)

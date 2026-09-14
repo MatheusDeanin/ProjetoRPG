@@ -31,7 +31,8 @@ func _ready():
 		_on_arma_coletada(InventoryManager.arma_equipada, info["dano"])
 
 	if has_node("Animacao"):
-		$Animacao.scale = Vector2(1.5, 1.5)
+		# Diminuí bastante a escala. Ajuste este 0.6 se precisar de maior ou menor!
+		$Animacao.scale = Vector2(0.6, 0.6)
 		$Animacao.texture_filter = CanvasItem.TEXTURE_FILTER_NEAREST
 
 		# Forca TODAS as animacoes de ataque a NAO repetirem
@@ -99,11 +100,9 @@ func _physics_process(delta):
 	# Processa o pedido de ataque
 	if Input.is_action_just_pressed("atacar"):
 		if is_attacking:
-			if is_on_floor() and has_node("Animacao") and $Animacao.animation == "attack":
+			if is_on_floor() and has_node("Animacao") and $Animacao.animation.begins_with("attack"):
 				combo_requested = true
 		else:
-			is_attacking = true
-			_ativar_hitbox(true)
 			if has_node("Animacao"):
 				var anim_name = "attack"
 				
@@ -121,7 +120,13 @@ func _physics_process(delta):
 				if not is_on_floor() and anim_name == "attack" and $Animacao.sprite_frames.has_animation("attack_air"):
 					anim_name = "attack_air"
 					
-				$Animacao.play(anim_name)
+				# TRAVA DE SEGURANÇA: Só inicia o ataque se a animação existir
+				if $Animacao.sprite_frames.has_animation(anim_name):
+					is_attacking = true
+					_ativar_hitbox(true)
+					$Animacao.play(anim_name)
+				else:
+					print("AVISO: A animação '", anim_name, "' não foi criada no AnimatedSprite2D!")
 
 	# Se estiver atacando, trava novas acoes
 	if is_attacking:

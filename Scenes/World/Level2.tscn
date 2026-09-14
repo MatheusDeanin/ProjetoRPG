@@ -1,4 +1,4 @@
-﻿[gd_scene format=3 uid="uid://ctdkq6jnwrf3f"]
+[gd_scene format=3 uid="uid://ctdkq6jnwrf3f"]
 
 [ext_resource type="PackedScene" path="res://Scenes/Player/Player.tscn" id="1_player"]
 [ext_resource type="PackedScene" path="res://Scenes/UI/HUD.tscn" id="2_hud"]
@@ -777,7 +777,7 @@ shape = SubResource("RectangleShape2D_plat")
 
 [node name="ChestLvl3" parent="Platform2" unique_id=1727340463 instance=ExtResource("3_chest")]
 position = Vector2(0, -30)
-arma_conteudo = "Katana AmaldiÃƒÂ§oada"
+arma_conteudo = "Katana Amaldicoada"
 
 [node name="ParedeEsq" type="StaticBody2D" parent="." unique_id=1901306101]
 position = Vector2(-360, 350)
@@ -866,4 +866,5 @@ proxima_fase = "res://Scenes/World/Mapa2.tscn"
 [node name="PortalParaLevel1" parent="." instance=ExtResource("9_portal")]
 position = Vector2(-100, 600)
 next_scene = "res://Scenes/World/TestLevel.tscn"
+
 

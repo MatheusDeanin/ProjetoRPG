@@ -251,7 +251,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_jh1yi")
 }],
 "loop": 1,
-"name": &"attack_katana",
+"name": &"attack_katana_amaldicoada",
 "speed": 5.0
 }, {
 "frames": [{
@@ -390,7 +390,7 @@ shape = SubResource("RectangleShape2D_col")
 [node name="Animacao" type="AnimatedSprite2D" parent="." unique_id=970376355]
 position = Vector2(0, -15)
 sprite_frames = SubResource("SpriteFrames_5rrho")
-animation = &"attack_katana"
+animation = &"attack_katana_amaldicoada"
 
 [node name="HitboxAtaque" type="Area2D" parent="." unique_id=111111111]
 position = Vector2(50, -60)

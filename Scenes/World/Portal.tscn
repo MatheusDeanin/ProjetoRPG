@@ -1,4 +1,4 @@
-﻿[gd_scene load_steps=3 format=3 uid="uid://portal12345"]
+[gd_scene load_steps=3 format=3 uid="uid://portal12345"]
 
 [ext_resource type="Script" path="res://Scripts/World/Portal.gd" id="1_script"]
 
@@ -10,3 +10,4 @@ script = ExtResource("1_script")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_portal")
+
