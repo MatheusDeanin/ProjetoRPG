@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://ddmdnyic7pq4" path="res://Assets/Hero/male_hero-fall_loop.png" id="2_jmcll"]
 [ext_resource type="Texture2D" uid="uid://dseve1uhbat80" path="res://Assets/Hero/male_hero-idle.png" id="3_4wape"]
 [ext_resource type="Texture2D" uid="uid://cr3wyhxdvxtxy" path="res://Assets/Hero/male_hero-combo_1_end.png" id="3_t26db"]
+[ext_resource type="Texture2D" uid="uid://brhuyvoicj28h" path="res://Assets/Hero/Firefly.png" id="4_825xp"]
 [ext_resource type="Texture2D" uid="uid://cbdmircw2hk8t" path="res://Assets/Hero/male_hero-jump.png" id="4_t26db"]
 [ext_resource type="Texture2D" uid="uid://dpgb7u11anfl3" path="res://Assets/Hero/male_hero-run.png" id="5_fk5o5"]
 [ext_resource type="Texture2D" uid="uid://bujngt5lm1cit" path="res://zip/male_hero-combo_1-2.png.png" id="10_weapon"]
@@ -51,6 +52,18 @@ region = Rect2(128, 0, 128, 128)
 [sub_resource type="AtlasTexture" id="AtlasTexture_p7cr0"]
 atlas = ExtResource("2_4wape")
 region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w4oha"]
+atlas = ExtResource("4_825xp")
+region = Rect2(0, 0, 458, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ribq"]
+atlas = ExtResource("4_825xp")
+region = Rect2(458, 0, 458, 768)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jh1yi"]
+atlas = ExtResource("4_825xp")
+region = Rect2(916, 0, 458, 768)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wpn_0"]
 atlas = ExtResource("10_weapon")
@@ -227,7 +240,16 @@ animations = [{
 "name": &"attack_espada_basica",
 "speed": 10.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w4oha")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ribq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jh1yi")
+}],
 "loop": 1,
 "name": &"attack_katana",
 "speed": 5.0
