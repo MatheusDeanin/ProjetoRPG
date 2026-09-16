@@ -164,7 +164,7 @@ theme_override_font_sizes/font_size = 24
 text = "Menu Principal"
 
 [node name="InventoryUI" parent="." unique_id=1950226496 instance=ExtResource("2_qc5w2")]
-offset_left = 383.0
-offset_top = 82.0
-offset_right = 383.0
-offset_bottom = 82.0
+offset_left = 21.0
+offset_top = 35.0
+offset_right = 21.0
+offset_bottom = 35.0
